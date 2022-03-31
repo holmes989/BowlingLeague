@@ -1,0 +1,17 @@
+﻿@{
+}
+@model Bowler
+
+<div class="card">
+    <div class="card-header">
+        <h1>Are you sure you want to delete the record for @Model.BowlerFirstName @Model.BowlerLastName?</h1>
+    </div>
+    <div class="card-body">
+        <a style="width:150px;" class="btn btn-primary mb-2" asp-action="Index">Cancel</a>
+
+        <form method="post">
+            <input type="hidden" asp-for="BowlerId" value="@Model.BowlerId" />
+            <button style="width:150px;" class="btn btn-danger" asp-action="DeleteBowler">Yes</button>
+        </form>
+    </div>
+</div>

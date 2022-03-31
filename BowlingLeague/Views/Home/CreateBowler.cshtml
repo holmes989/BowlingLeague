@@ -1,0 +1,130 @@
+﻿@{
+}
+@model Bowler
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h1>Create Bowler Record</h1>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">First Name</label>
+                <input class="w-75" asp-for="BowlerFirstName" />
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">Middle Initial</label>
+                <input class="w-75" asp-for="BowlerMiddleInit" />
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">Last Name</label>
+                <input class="w-75" asp-for="BowlerLastName" />
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">Address</label>
+                <input class="w-75" asp-for="BowlerAddress" />
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">City</label>
+                <input class="w-75" asp-for="BowlerCity" />
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">State</label>
+                <select class="w-75" asp-for="BowlerState">
+                    <option value="AK">AK</option>
+                    <option value="AL">AL</option>
+                    <option value="AR">AR</option>
+                    <option value="AZ">AZ</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DC">DC</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="IA">IA</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="MA">MA</option>
+                    <option value="MD">MD</option>
+                    <option value="ME">ME</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MO">MO</option>
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="NE">NE</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NV">NV</option>
+                    <option value="NY">NY</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VA">VA</option>
+                    <option value="VT">VT</option>
+                    <option value="WA">WA</option>
+                    <option value="WI">WI</option>
+                    <option value="WV">WV</option>
+                    <option value="WY">WY</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">Zip</label>
+                <input class="w-75" asp-for="BowlerZip" />
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">Phone</label>
+                <input class="w-75" asp-for="BowlerPhoneNumber" />
+            </div>
+
+            <div class="input-group mb-2">
+                <label class="input-group-prepend input-group-text w-25">Team</label>
+                <select class="w-75" asp-for="TeamID">
+                    @foreach (var x in ViewBag.Teams)
+                    {
+                        <option value="@x.TeamID">@x.TeamName</option>
+                    }
+                </select>
+            </div>
+
+            <!--This will display an update or create button depending on if the record already exists-->
+            @if (Model != null)
+            {
+                <input type="hidden" asp-for="BowlerId" value="@Model.BowlerId" />
+                <button class="btn btn-primary" asp-action="EditBowler">Update</button>
+            }
+            else
+            {
+                <button class="btn btn-primary" asp-action="CreateBowler">Create</button>
+            }
+
+        </form>
+    </div>
+</div>

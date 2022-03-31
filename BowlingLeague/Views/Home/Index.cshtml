@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Bowler>
+
+
+<div class="row">
+    <div class="col-3">
+
+        <h2>Sort by Team:</h2>
+
+        <div team-blah="" page-action="Index" teams="@ViewBag.Teams" current-id="@ViewBag.CurrentTeamID" page-classes-enabled="true"
+             page-class="btn w-100 mb-2" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"></div>
+
+    </div>
+    <div class="col">
+
+        @if (ViewBag.CurrentTeamID == 0)
+        {
+            <h1>Contact List:</h1>
+        }
+        else
+        {
+            <h1>Contact List for the @ViewBag.Teams[ViewBag.CurrentTeamID - 1].TeamName:</h1>
+        }
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Middle Initial</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                    <th><a class="btn btn-success" asp-action="CreateBowler">Create New Bowler</a></th>
+
+                </tr>
+            </thead>
+
+            <tbody class="">
+
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.BowlerFirstName</td>
+                        <td>@x.BowlerMiddleInit</td>
+                        <td>@x.BowlerLastName</td>
+                        <td>@x.BowlerAddress</td>
+                        <td>@x.BowlerCity</td>
+                        <td>@x.BowlerState</td>
+                        <td>@x.BowlerZip</td>
+                        <td>@x.BowlerPhoneNumber</td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="EditBowler" asp-route-id="@x.BowlerId">Edit</a>
+                            <a class="btn btn-danger" asp-action="DeleteBowler" asp-route-id="@x.BowlerId">Delete</a>
+                        </td>
+
+                    </tr>
+
+
+
+                }
+
+
+            </tbody>
+
+
+        </table>
+    </div>
+</div>
+
+<div>
+
+</div>
